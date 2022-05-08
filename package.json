@@ -1,0 +1,36 @@
+{
+  "name": "movie-parser",
+  "version": "1.0.0",
+  "description": "CLI tool for parsing movies by API",
+  "main": "cron.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./cron.js"
+  },
+  "bin": {
+    "parser": "./bin/parser.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "commander": "^9.2.0",
+    "dotenv": "^16.0.0",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.3.1",
+    "node-cron": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.2"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
