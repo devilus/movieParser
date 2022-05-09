@@ -14,6 +14,8 @@ const getPagesCount = async () => {
 };
 
 export const parseIDs = async (options = { forceUpdate: false }) => {
+  console.log('IDs parsing...');
+
   const pagesCount = await getPagesCount();
   const pages = _.range(1, pagesCount + 1);
 
@@ -48,9 +50,6 @@ export const parseIDs = async (options = { forceUpdate: false }) => {
   }
 
   // Return not exists only
-  const existMovieIDs = await Movie.find().then((rows) =>
-    rows.map((row) => Number(row.id))
-  );
-
-  return _.difference(movieIDs, existMovieIDs);
+  const existMovieIDs = await Movie.find().distinct('_id');
+  return movieIDs.filter((movieID) => !existMovieIDs.includes(movieID));
 };
