@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { axiosInstance } from '../../settings/axios.js';
-import { stepTimeout } from './stepTimeout.js';
+import { stepTimeout } from './step-timeout.js';
 import { Movie } from '../../settings/db.js';
 
 const params = {

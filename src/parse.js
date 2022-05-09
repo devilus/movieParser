@@ -1,12 +1,7 @@
-import { parseIDs } from './utils/parseIDs.js';
-import { parseData } from './utils/parseData.js';
-
-const { log } = console;
+import { parseIDs } from './utils/parse-ids.js';
+import { parseData } from './utils/parse-data.js';
 
 export const parse = async (options = { forceUpdate: false }) => {
-  log('IDs parsing...');
   const movieIDs = await parseIDs(options);
-
-  log(`Data parsing of ${movieIDs.length} movies...`);
   parseData(...movieIDs);
 };

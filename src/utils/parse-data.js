@@ -1,9 +1,11 @@
 import _ from 'lodash';
 import { axiosInstance } from '../../settings/axios.js';
-import { stepTimeout } from './stepTimeout.js';
-import { saveData } from './saveData.js';
+import { stepTimeout } from './step-timeout.js';
+import { saveData } from './save-data.js';
 
 export const parseData = (...movieIDs) => {
+  console.log(`Data parsing of ${movieIDs.length} movies...`);
+
   const chunkSize = 10;
   const chunks = _.chunk(movieIDs, chunkSize);
 
