@@ -42,22 +42,18 @@ export const parseData = (...movieIDs) => {
     );
 
     // Save to db
-    await Promise.all(promises)
-      .then((result) => {
-        saveData(...result).then(() => {
-          console.log(`Parsed data chunk: ${makeRangeString(chunkNum)}`);
-          parseChunk(chunkNum + 1); // Run with the next data chunk
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-
-        const waitSeconds = 60;
-        setTimeout(() => {
-          parseChunk(chunkNum); // Rerun with the same data chunk
-        }, waitSeconds * 1000);
-      });
+    try {
+      const data = await Promise.all(promises);
+      await saveData(...data);
+      console.log(`Parsed data chunk: ${makeRangeString(chunkNum)}`);
+      parseChunk(chunkNum + 1); // Run with the next data chunk
+    } catch (error) {
+      console.log(error);
+      setTimeout(() => {
+        parseChunk(chunkNum); // Rerun with the same data chunk
+      }, 60000);
+    }
   };
 
-  parseChunk(0);
+  return parseChunk(0);
 };

@@ -9,5 +9,5 @@ export const saveData = async (...movies) => {
     },
   }));
 
-  return Movie.bulkWrite(bulkData);
+  Movie.bulkWrite(bulkData);
 };

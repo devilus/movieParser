@@ -12,4 +12,4 @@ program
 
 program.parse();
 
-await parse({ ...program.opts() });
+parse({ ...program.opts() });

@@ -2,10 +2,10 @@
   "name": "movie-parser",
   "version": "1.0.0",
   "description": "CLI tool for parsing movies by API",
-  "main": "cron.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node ./cron.js"
+    "start": "node ./index.js"
   },
   "bin": {
     "parser": "./bin/parser.js"

@@ -40,9 +40,15 @@ export const parseIDs = async (options = { forceUpdate: false }) => {
       })
   );
 
-  const movieIDs = await Promise.all(promises)
-    .then(_.flatten)
-    .catch((error) => console.log(error));
+  let movieIDs = [];
+  try {
+    movieIDs = await Promise.all(promises).then(_.flatten);
+  } catch (error) {
+    console.log(error);
+    setTimeout(() => {
+      parseIDs(options);
+    }, 60000);
+  }
 
   // Return all
   if (options.forceUpdate) {

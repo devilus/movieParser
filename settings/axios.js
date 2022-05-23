@@ -9,7 +9,8 @@ const headers = {
   Accept: '*/*',
 };
 
-export const axiosInstance = axios.create({
+export const axiosClient = axios.create({
   baseURL: process.env.BASE_URL,
   headers,
+  timeout: 30000,
 });
