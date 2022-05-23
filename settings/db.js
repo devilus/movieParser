@@ -1,12 +1,9 @@
 import mongoose from 'mongoose';
 import { movieSchema } from '../schemas/movie-schema.js';
 
-const dbUser = process.env.DB_USER;
-const dbPassword = process.env.DB_PASSWORD;
-const dbHost = process.env.DB_HOST;
-const dbName = process.env.DB_NAME;
+const { DB_HOST, DB_NAME, DB_PASSWORD, DB_USER, DB_PORT } = process.env;
 
-const connection = `mongodb+srv://${dbUser}:${dbPassword}@${dbHost}/${dbName}`;
+const connection = `mongodb://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`;
 mongoose.connect(connection);
 
 export const Movie = mongoose.model('Movie', movieSchema);
